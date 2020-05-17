@@ -2,61 +2,46 @@
 # -*- coding: utf-8 -*-
 import random
 
+lista = ["1", "2", "3", "4", "5", "6", "7", "8"]
 
-# the .randrange() function generates a
-# random number within the specified range.
-num = random.randrange(1000, 10000)
+wyb1 = random.choice(lista)
+wyb2 = random.choice(lista)
+wyb3 = random.choice(lista)
+wyb4 = random.choice(lista)
 
-n = int(input("Wybierz 4 liczby:"))
+wybor_komp = [wyb1, wyb2, wyb3, wyb4]
+print(wybor_komp)
 
+print("Witaj w grze masterminder wybierz 4. ")
+print("Wybierz 4 liczby:")
+wybor_user = list(input())
+print(wybor_user)
 
-if (n == num):
-	print("Dobrz. Wybrałeś za pierwszym razem jesteś Mastrerminderem")
-else:
+odrzucone_user = []
+odrzucone_komp = []
 
-	ctr = 0
+for pozycja in range(4) :
+	if wybor_user[pozycja] == wybor_komp[pozycja] :
+		print("x")
+	else:
+		odrzucone_user.append(wybor_user[pozycja])
+		odrzucone_komp.append(wybor_komp[pozycja])
 
-	while (n != num):
+req1 = odrzucone_user[0]
+req2 = odrzucone_user[1]
+req3 = odrzucone_user[2]
+req4 = odrzucone_user[3]
 
-		ctr += 1
+def robienie_zer():
+	if req1 == odrzucone_komp[0]:
+		print("O")
+	if req2 == odrzucone_komp[1]:
+		print("0")
+	if req3 == odrzucone_komp[2]:
+		print("0")
+	if req4 == odrzucone_komp[3]:
+		print("0")
+	else:
+		print("-")
 
-		count = 0
-
-
-		n = str(n)
-
-		num = str(num)
-
-		correct = ['X']*4
-
-		for i in range(0, 4):
-
-
-			if (n[i] == num[i]):
-
-				count += 1
-
-				correct[i] = n[i]
-			else:
-				continue
-
-
-		if (count < 4) and (count != 0):
-			print("Nie te numery ale zaznaczyłeś ", count, " digit(s) dobrze!")
-			print("3 mumerki były dobrze.")
-			for k in correct:
-				print(k, end=' ')
-			print('\n')
-			print('\n')
-			n = int(input("Wpisz następne 4 liczby: "))
-
-
-		elif (count == 0):
-			print("Żadne liczby się nie zgadzają.")
-			n = int(input("Wybierz 4 liczby: "))
-	if n == num:
-		print("Jesteś masterminderem!")
-		print("zajęło ci to", ctr,)
-
-
-
+robienie_zer()
